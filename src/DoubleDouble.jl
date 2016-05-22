@@ -33,7 +33,7 @@ halfprec(x::Float32) = (p = x*half32; (x-p)+p) # float32(signif(x,12,2))
 halfprec(x::Float16) = (p = x*half16; (x-p)+p) # float16(signif(x,5,2))
 halfprec(x::BigFloat) = (p = x*halfBig; (x-p)+p) # BigFloat(signif(x,128,2))
 
-function splitprec(x::BitsFloat)
+@inline function splitprec(x::BitsFloat)
     h = halfprec(x)
     h, x-h
 end
